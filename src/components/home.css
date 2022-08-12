@@ -1,0 +1,26 @@
+.container{
+    max-width: 1000px;
+}
+
+.header{
+    margin: 10px auto 20px;
+}
+
+.sub-header{
+    text-align: center;
+    margin: 40px auto 60px;
+}
+
+.quote{
+    font-size: 35px;
+}
+
+.line{
+    left: 0;
+    border-bottom: 1.5px solid rgb(223, 223, 223);
+    width: auto;
+}
+
+.contents{
+    margin: 40px auto 100px;
+}

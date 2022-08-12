@@ -1,11 +1,32 @@
-import React from "react"
-
+import React, { useEffect, useState } from "react"
+import Body from './Body'
+import './home.css'
+ 
 function Home() {
-	return (
-		<div>
-			<h1>Your Next Vacation Destination</h1>
-		</div>
-	)
-}
+    const [location, setLocation] = useState([])
+ 	console.log(location)
 
+    useEffect(() => {
+      fetch("http://localhost:9292/locations")
+      .then((r) => r.json())
+      .then((data) => setLocation(data));
+     }, [])
+
+ 
+    return (
+        <div>
+            <div className="header container">
+                	<h3 className="title">tripaholic</h3>
+            </div>
+			<div class="line"></div>
+			<div className="sub-header container">
+                <h1 className="quote display-6">Explore Your Next Vacation Destinations!</h1>
+			</div>
+            <div className="contents container">
+                <Body data={location}  />
+            </div>
+        </div>
+    )
+}
+ 
 export default Home

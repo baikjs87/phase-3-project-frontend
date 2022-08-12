@@ -1,0 +1,28 @@
+.body {
+    height: 100px;
+}
+
+.button-group{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button{
+    float: right;
+    font-size: 80%;
+    background-color: transparent;
+    border: none;
+}
+
+.img{
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-title{
+    margin: auto auto 15px; 
+}
+
+.list-contents{
+    margin-top: 15px;
+}
