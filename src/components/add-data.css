@@ -1,7 +1,3 @@
-.form-container{
-
-}
-
 .city-form{
     margin-top: 15px;
 }
@@ -11,11 +7,15 @@
     font-size: 13px;
 }
 
-.line{
-    margin: 15px 30px 0 0;
+.new-city{
+    margin: 0;
 }
 
-.btn{
+.line{
+    margin: 5px 20px 5px 20px;
+}
+
+.add-button{
     font-size: 13px;
     background-color: rgb(8, 148, 25);
     padding: 2px 12px 2px 12px;
@@ -23,7 +23,13 @@
     color: white;
 }
 
-.btn:hover{
+.add-button:hover{
     background-color: rgb(2, 125, 16);
     color: white;
+}
+
+.add-button:focus{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
