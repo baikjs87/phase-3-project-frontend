@@ -6,7 +6,8 @@ function AddData({ data, cityAdded, setLocation }){
     const [URL, setURL] = useState("")
     const [thingsToDo, setThingsToDo] = useState("")
     const [placesToGo, setPlacesToGo] = useState("")
-    const [citySelect, setCitySelect] = useState()
+    const [thingsCitySelect, setThingsCitySelect] = useState()
+    const [placesCitySelect, setPlacesCitySelect] = useState()
 
     const handleCitySubmit = (e) => {
         e.preventDefault()
@@ -32,8 +33,8 @@ function AddData({ data, cityAdded, setLocation }){
     const handleNewThings = (e) => {
         e.preventDefault()
         setThingsToDo("")
-        console.log(citySelect)
-        const newThing = { "activity": thingsToDo, "location_id": citySelect }
+        console.log(thingsCitySelect)
+        const newThing = { "activity": thingsToDo, "location_id": thingsCitySelect }
 
         fetch("http://localhost:9292/things_to_do", {
 			method: "POST",
@@ -63,8 +64,7 @@ function AddData({ data, cityAdded, setLocation }){
     const handleNewPlaces = (e) => {
         e.preventDefault()
         setPlacesToGo("")
-        setCitySelect("")
-        const newPlace = { "place": placesToGo, "location_id": citySelect }
+        const newPlace = { "place": placesToGo, "location_id": placesCitySelect }
 
         fetch("http://localhost:9292/places_to_go", {
 			method: "POST",
@@ -91,6 +91,10 @@ function AddData({ data, cityAdded, setLocation }){
         console.log(newPlace)
     }
 
+    function reset() {
+        const dropdown = document.getElementById("dropdown")
+    }
+
     return(
         <div className="card accordion" id="accordionExample">
             <div className="accordion-item">
@@ -115,14 +119,14 @@ function AddData({ data, cityAdded, setLocation }){
                     {/* <h6>New Things To Do</h6> */}
                     <form className="accordion-collapse collapse newThings" id="collapseOne" onSubmit={handleNewThings}>
                         <label className="accordion-body">
-                            <input type="text" value={thingsToDo} placeholder="New Things To Do" onChange={(e) => setThingsToDo(e.target.value)} className="city-input" required/>
-                            <select className="select city-input" onChange={(e) => {setCitySelect(e.target.value)}} required>
+                            <input type="text" value={thingsToDo} placeholder="New Things To Do" onChange={(e) => setThingsToDo(e.target.value) } className="city-input" required/>
+                            <select className="select city-input" onChange={(e) => {setThingsCitySelect(e.target.value)}} required>
                                 <option value="default" >Select City</option>
                                 {data.map((data) => 
                                 <option value={data.id} key={data.id}>{data.city}</option>)}
                             </select>
                         </label>
-                        <button type="submit" className="add-button">Add</button>
+                        <button type="submit" className="add-button" onClick={reset()}>Add</button>
                     </form>
                 </div>
                 <div className="line accordion-collapse collapse" id="collapseOne"></div>
@@ -131,13 +135,13 @@ function AddData({ data, cityAdded, setLocation }){
                     <form className="accordion-collapse collapse newPlaces" id="collapseOne" onSubmit={handleNewPlaces}>
                         <label className="accordion-body">
                             <input type="text" value={placesToGo} placeholder="New Places To Go" onChange={(e) => setPlacesToGo(e.target.value)} className="city-input" required/>
-                            <select className="select city-input" onChange={(e) => {setCitySelect(e.target.value)}}  required>
+                            <select className="select city-input" onChange={(e) => {setPlacesCitySelect(e.target.value)}}  required>
                                 <option value="default" defaultValue>Select City</option>
                                 {data.map((data) => 
                                 <option value={data.id} key={data.id}>{data.city}</option>)}
                             </select>
                         </label>
-                        <button type="submit" className="add-button">Add</button>
+                        <button type="submit" className="add-button" onClick={reset()}>Add</button>
                     </form>
                 </div>
             </div>
